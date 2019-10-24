@@ -1,23 +1,28 @@
-import static org.junit.Assert.*;
+package test.Bastien_Didier;
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
-import org.junit.Before;
+import java.util.Random;
+
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
+import org.mockito.Mock;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
+
+import test.Bastien_Didier.MyPoint;
+
 
 public class MyPointTest {
 
-	@Before
-	public void setUp() throws Exception {
 		
-		MyPoint p2 		 = new MyPoint(1,2);
-	}
-
 	@Test
 	public void Constructor() {
 		
 		MyPoint pOrigine = new MyPoint();
 		assertTrue(pOrigine.getX() == 0);
 		assertTrue(pOrigine.getY() == 0);
+		
+		
 	}
 	
 	@Test
@@ -33,8 +38,6 @@ public class MyPointTest {
 		p3.setX(-1);
 		p20.setX(2048);
 		pOrigine1.setX(15.2151);
-		
-		
 		
 		assertTrue(pOrigine.getX() == 0);
 		assertTrue(p2.getX() == 12);
@@ -173,5 +176,25 @@ public class MyPointTest {
 		assertTrue(true);
 	}
 	
+	
+	 @Mock
+	Random random1;
+	
+	@Mock
+	Random random2;
+	
+	 @Test
+    public void testSetPoint(){
+	 
+		MyPoint p = new MyPoint();
+		random1 = mock(Random.class);
+		random2 = mock(Random.class);
+		when(random1.nextDouble()).thenReturn(1d);
+		when(random2.nextDouble()).thenReturn(2d);
+		p.setPoint(random1, random2);
 
+		assertTrue(1d == p.getX());
+		assertTrue(2d == p.getY());
+	
+    }
 }

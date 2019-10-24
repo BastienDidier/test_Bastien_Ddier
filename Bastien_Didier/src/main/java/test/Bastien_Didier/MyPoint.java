@@ -1,3 +1,4 @@
+package test.Bastien_Didier;
 import java.util.Random;
 
 import static java.lang.Math.PI;
